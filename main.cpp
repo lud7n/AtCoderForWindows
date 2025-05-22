@@ -30,42 +30,10 @@ constexpr int MOD = 998244353;
 // constexpr int MOD = 1000000007;
 #define pb push_back
 
-set<ll> st;
-
-// N の約数をすべて求める関数
-void calc_divisors(long long N) {
-
-    // 各整数 i が N の約数かどうかを調べる
-    for (long long i = 1; i * i <= N; ++i) {
-        // i が N の約数でない場合はスキップ
-        if (N % i != 0) continue;
-
-        // i は約数である
-        st.insert(i);
-
-        // N ÷ i も約数である (重複に注意)
-        if (N / i != i) st.insert(N / i);
-    }
-}
-
 int main() {
-    ll k;
-    cin >> k;
-    ll ans = 0;
-
-    calc_divisors(k);
-
-    for(auto a = st.begin(); a != st.end(); a++){
-        for(auto b = a; b != st.end(); b++){
-            ll c = k;
-            if((c / (*a)) < (*b)) continue;
-            if(c % ((*a) * (*b)) != 0) continue;
-            c /= ((*a) * (*b));
-            if(*b <= c and st.count(c)) ans++;
-        }
-    }
-
-    cout << ans << endl;
+    ll n;
+    cin >> n;
+    cout << 2*n << endl;
 
     return 0;
 }
